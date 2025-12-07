@@ -87,7 +87,58 @@ void checkAllAccounts(struct User u) {
 }
 
 void checkAccountDetails(struct User u) {
-    printf("Feature not implemented yet\n");
+    struct Record r;
+    FILE *fp;
+    int accountId, found = 0;
+    double interest, monthlyInterest;
+
+    printf("\nEnter account ID: ");
+    scanf("%d", &accountId);
+
+    fp = fopen("./data/records.txt", "r");
+    if (fp == NULL) {
+        printf("Error opening file!\n");
+        mainMenu(u);
+        return;
+    }
+
+    while (fscanf(fp, "%d %d %s %d %d/%d/%d %s %d %lf %s",
+                  &r.id, &r.userId, r.name, &r.accountNbr,
+                  &r.deposit.day, &r.deposit.month, &r.deposit.year,
+                  r.country, &r.phone, &r.amount, r.accountType) != EOF) {
+        if (r.id == accountId && r.userId == u.id) {
+            printf("\nAccount ID: %d\n", r.id);
+            printf("Account Number: %d\n", r.accountNbr);
+            printf("Deposit Date: %02d/%02d/%d\n", r.deposit.day, r.deposit.month, r.deposit.year);
+            printf("Country: %s\n", r.country);
+            printf("Phone: %d\n", r.phone);
+            printf("Amount: $%.2lf\n", r.amount);
+            printf("Type: %s\n", r.accountType);
+
+            if (strcmp(r.accountType, "savings") == 0) {
+                monthlyInterest = r.amount * 0.07 / 12;
+                printf("\nYou will get $%.2lf as interest on day %d of every month\n", monthlyInterest, r.deposit.day);
+            } else if (strcmp(r.accountType, "fixed01") == 0) {
+                interest = r.amount * 0.04;
+                printf("\nYou will get $%.2lf as interest on %02d/%02d/%d\n", interest, r.deposit.day, r.deposit.month, r.deposit.year + 1);
+            } else if (strcmp(r.accountType, "fixed02") == 0) {
+                interest = r.amount * 0.05;
+                printf("\nYou will get $%.2lf as interest on %02d/%02d/%d\n", interest, r.deposit.day, r.deposit.month, r.deposit.year + 2);
+            } else if (strcmp(r.accountType, "fixed03") == 0) {
+                interest = r.amount * 0.08;
+                printf("\nYou will get $%.2lf as interest on %02d/%02d/%d\n", interest, r.deposit.day, r.deposit.month, r.deposit.year + 3);
+            } else if (strcmp(r.accountType, "current") == 0) {
+                printf("\nYou will not get interests because the account is of type current\n");
+            }
+            found = 1;
+            break;
+        }
+    }
+    fclose(fp);
+
+    if (!found) {
+        printf("\nAccount not found or you don't have permission!\n");
+    }
     mainMenu(u);
 }
 
