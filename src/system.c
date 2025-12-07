@@ -292,7 +292,52 @@ void makeTransaction(struct User u) {
 }
 
 void removeAccount(struct User u) {
-    printf("Feature not implemented yet\n");
+    struct Record records[100];
+    FILE *fp;
+    int accountId, count = 0, found = 0;
+
+    printf("\nEnter account ID to remove: ");
+    scanf("%d", &accountId);
+
+    fp = fopen("./data/records.txt", "r");
+    if (fp == NULL) {
+        printf("Error opening file!\n");
+        mainMenu(u);
+        return;
+    }
+
+    while (fscanf(fp, "%d %d %s %d %d/%d/%d %s %d %lf %s",
+                  &records[count].id, &records[count].userId, records[count].name,
+                  &records[count].accountNbr, &records[count].deposit.day,
+                  &records[count].deposit.month, &records[count].deposit.year,
+                  records[count].country, &records[count].phone,
+                  &records[count].amount, records[count].accountType) != EOF) {
+        if (records[count].id == accountId && records[count].userId == u.id) {
+            found = 1;
+        } else {
+            count++;
+        }
+    }
+    fclose(fp);
+
+    if (!found) {
+        printf("\nAccount not found or you don't have permission!\n");
+        mainMenu(u);
+        return;
+    }
+
+    fp = fopen("./data/records.txt", "w");
+    for (int i = 0; i < count; i++) {
+        fprintf(fp, "%d %d %s %d %02d/%02d/%d %s %d %.2lf %s\n",
+                records[i].id, records[i].userId, records[i].name,
+                records[i].accountNbr, records[i].deposit.day,
+                records[i].deposit.month, records[i].deposit.year,
+                records[i].country, records[i].phone,
+                records[i].amount, records[i].accountType);
+    }
+    fclose(fp);
+
+    printf("\nAccount removed successfully!\n");
     mainMenu(u);
 }
 
