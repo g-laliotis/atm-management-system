@@ -3,8 +3,11 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![C99](https://img.shields.io/badge/C-C99-blue.svg)](https://en.wikipedia.org/wiki/C99)
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?logo=github)](https://github.com/g-laliotis/atm-management-system)
+[![GitHub Pages](https://img.shields.io/badge/GitHub-Pages-blue?logo=github)](https://g-laliotis.github.io/atm-management-system/)
 
 A professional ATM management system written in C with advanced features including real-time notifications, password encryption, and enhanced UI.
+
+🌐 **[View Live Demo & Documentation](https://g-laliotis.github.io/atm-management-system/)**
 
 ## Features
 
