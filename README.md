@@ -1,5 +1,9 @@
 # ATM Management System
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![C99](https://img.shields.io/badge/C-C99-blue.svg)](https://en.wikipedia.org/wiki/C99)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?logo=github)](https://github.com/g-laliotis/atm-management-system)
+
 A professional ATM management system written in C with advanced features including real-time notifications, password encryption, and enhanced UI.
 
 ## Features
@@ -118,3 +122,13 @@ gcc -Wall -Wextra -std=c99 -pthread
 ```
 
 No warnings, clean compilation.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Author
+
+**Giorgos Laliotis**
+- GitHub: [@g-laliotis](https://github.com/g-laliotis)
+- Project: [atm-management-system](https://github.com/g-laliotis/atm-management-system)
