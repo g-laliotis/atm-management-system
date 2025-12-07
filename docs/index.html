@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATM Management System | Professional Banking System in C</title>
+    <meta name="description" content="Professional ATM management system with password encryption, real-time notifications, and enhanced UI">
+    <meta name="keywords" content="atm, banking, c, encryption, notifications, terminal, cli">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏦</text></svg>">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0d1117; color: #e6edf3; line-height: 1.6;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        .header { text-align: center; margin-bottom: 3rem; }
+        .header h1 { font-size: 3rem; color: #58a6ff; margin-bottom: 1rem; }
+        .header p { font-size: 1.2rem; color: #8b949e; }
+        .badges { display: flex; justify-content: center; gap: 0.5rem; margin: 1rem 0; flex-wrap: wrap; }
+        .badge { padding: 0.3rem 0.8rem; background: #21262d; border-radius: 6px; font-size: 0.9rem; }
+        .section { margin: 2rem 0; padding: 1.5rem; background: #161b22; border-radius: 8px; border: 1px solid #30363d; }
+        .section h2 { color: #f0f6fc; margin-bottom: 1rem; }
+        .code { background: #0d1117; padding: 1rem; border-radius: 6px; border: 1px solid #30363d; font-family: 'SF Mono', Monaco, monospace; overflow-x: auto; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+        .card { background: #21262d; padding: 1.5rem; border-radius: 8px; border: 1px solid #30363d; }
+        .card h3 { color: #58a6ff; margin-bottom: 0.5rem; }
+        .btn { display: inline-block; padding: 0.8rem 1.5rem; background: #238636; color: white; text-decoration: none; border-radius: 6px; margin: 0.5rem 0.5rem 0.5rem 0; }
+        .btn:hover { background: #2ea043; }
+        .btn-secondary { background: #21262d; border: 1px solid #30363d; }
+        .btn-secondary:hover { background: #30363d; }
+        a { color: #58a6ff; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .feature-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏦 ATM Management System</h1>
+            <p>Professional banking system with encryption, real-time notifications & enhanced UI</p>
+            <div class="badges">
+                <span class="badge">C99 Standard</span>
+                <span class="badge">MIT License</span>
+                <span class="badge">XOR Encryption</span>
+                <span class="badge">POSIX Threads</span>
+                <span class="badge">Named Pipes IPC</span>
+                <span class="badge">Professional Makefile</span>
+            </div>
+            <div style="margin-top: 1.5rem;">
+                <a href="https://github.com/g-laliotis/atm-management-system" class="btn">View on GitHub</a>
+                <a href="#features" class="btn btn-secondary">Features</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🚀 Quick Start</h2>
+            <div class="code">git clone https://github.com/g-laliotis/atm-management-system.git
+cd atm-management-system
+make
+./bin/atm
+
+# Sample credentials
+Username: Alice, Password: 1234password
+Username: Michel, Password: password1234</div>
+        </div>
+
+        <div id="features" class="section">
+            <h2>✨ Core Features</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="feature-icon">👤</div>
+                    <h3>User Management</h3>
+                    <p>Secure registration and login with unique username validation and encrypted password storage</p>
+                </div>
+                <div class="card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Account Operations</h3>
+                    <p>Create, update, and manage multiple account types: savings, current, fixed01/02/03</p>
+                </div>
+                <div class="card">
+                    <div class="feature-icon">💸</div>
+                    <h3>Transactions</h3>
+                    <p>Deposit and withdraw with balance validation. Fixed accounts protected from transactions</p>
+                </div>
+                <div class="card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Interest Calculation</h3>
+                    <p>Automatic interest calculation: Savings 7%, Fixed01 4%, Fixed02 5%, Fixed03 8%</p>
+                </div>
+                <div class="card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Transfer Ownership</h3>
+                    <p>Transfer accounts between users with instant real-time notifications</p>
+                </div>
+                <div class="card">
+                    <div class="feature-icon">🗑️</div>
+                    <h3>Account Removal</h3>
+                    <p>Delete accounts with ownership verification and persistent storage updates</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🎨 Bonus Features</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="feature-icon">🔐</div>
+                    <h3>Password Encryption</h3>
+                    <p>XOR cipher encryption for secure password storage in text files</p>
+                </div>
+                <div class="card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Enhanced Terminal UI</h3>
+                    <p>Color-coded messages, professional layout with Unicode box-drawing characters</p>
+                </div>
+                <div class="card">
+                    <div class="feature-icon">🔔</div>
+                    <h3>Real-time Notifications</h3>
+                    <p>Named pipes (FIFO) with background threads for instant transfer alerts</p>
+                </div>
+                <div class="card">
+                    <div class="feature-icon">📁</div>
+                    <h3>Professional Structure</h3>
+                    <p>Organized folders: bin/, obj/, include/, src/, data/, logs/, docs/</p>
+                </div>
+                <div class="card">
+                    <div class="feature-icon">🗄️</div>
+                    <h3>SQLite Support</h3>
+                    <p>Optional database backend with schema ready (commented in code)</p>
+                </div>
+                <div class="card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Code Optimization</h3>
+                    <p>Modular design with separated utilities and reduced code duplication</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🏗️ Project Structure</h2>
+            <div class="code">atm-management-system/
+├── bin/              # Compiled binaries
+├── obj/              # Object files
+├── include/          # Header files
+│   └── header.h
+├── src/              # Source code
+│   ├── main.c        # Main program and menu
+│   ├── auth.c        # Authentication with encryption
+│   ├── system.c      # Account management
+│   ├── utils.c       # UI and notification utilities
+│   └── db.c          # Database layer (SQLite optional)
+├── data/             # Data storage
+│   ├── records.txt   # Account records
+│   └── users.txt     # User credentials (encrypted)
+├── logs/             # Application logs
+├── docs/             # Documentation
+└── Makefile          # Build configuration</div>
+        </div>
+
+        <div class="section">
+            <h2>💻 Building & Running</h2>
+            <div class="code"># Build the project
+make
+
+# Run the application
+make run
+# or
+./bin/atm
+
+# Clean build artifacts
+make clean
+
+# Install system-wide (optional)
+sudo make install</div>
+        </div>
+
+        <div class="section">
+            <h2>🧪 Testing Real-time Notifications</h2>
+            <p>Open two terminals to test the instant notification system:</p>
+            <div class="code"># Terminal 1
+./bin/atm
+# Login as Alice
+# Transfer account to Michel
+
+# Terminal 2
+./bin/atm
+# Login as Michel
+# You'll see instant notification when Alice transfers!</div>
+        </div>
+
+        <div class="section">
+            <h2>🔧 Technical Details</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Language</h3>
+                    <p>C (C99 standard)</p>
+                </div>
+                <div class="card">
+                    <h3>Threading</h3>
+                    <p>POSIX threads for notifications</p>
+                </div>
+                <div class="card">
+                    <h3>IPC</h3>
+                    <p>Named pipes (FIFOs)</p>
+                </div>
+                <div class="card">
+                    <h3>Encryption</h3>
+                    <p>XOR cipher</p>
+                </div>
+                <div class="card">
+                    <h3>Build System</h3>
+                    <p>GNU Make</p>
+                </div>
+                <div class="card">
+                    <h3>Optional DB</h3>
+                    <p>SQLite3</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📚 Documentation</h2>
+            <p>Complete documentation and development resources:</p>
+            <div style="margin-top: 1rem;">
+                <a href="https://github.com/g-laliotis/atm-management-system/blob/main/README.md" class="btn btn-secondary">README</a>
+                <a href="https://github.com/g-laliotis/atm-management-system/blob/main/DEVELOPMENT.md" class="btn btn-secondary">Development</a>
+                <a href="https://github.com/g-laliotis/atm-management-system/blob/main/docs/FEATURES.md" class="btn btn-secondary">Features</a>
+                <a href="https://github.com/g-laliotis/atm-management-system/issues" class="btn btn-secondary">Issues</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🔒 Security</h2>
+            <p>Security features implemented:</p>
+            <ul style="margin-left: 2rem; margin-top: 1rem; color: #8b949e;">
+                <li>Passwords encrypted using XOR cipher before storage</li>
+                <li>User authentication validates encrypted credentials</li>
+                <li>Account operations require ownership verification</li>
+                <li>No plaintext passwords in data files</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>📈 Interest Rates</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Savings Account</h3>
+                    <p>7% annual (monthly interest)</p>
+                </div>
+                <div class="card">
+                    <h3>Fixed01 (1 year)</h3>
+                    <p>4% annual</p>
+                </div>
+                <div class="card">
+                    <h3>Fixed02 (2 years)</h3>
+                    <p>5% annual</p>
+                </div>
+                <div class="card">
+                    <h3>Fixed03 (3 years)</h3>
+                    <p>8% annual</p>
+                </div>
+                <div class="card">
+                    <h3>Current Account</h3>
+                    <p>No interest</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
