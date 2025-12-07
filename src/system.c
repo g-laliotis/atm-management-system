@@ -209,7 +209,85 @@ void updateAccount(struct User u) {
 }
 
 void makeTransaction(struct User u) {
-    printf("Feature not implemented yet\n");
+    struct Record records[100];
+    FILE *fp;
+    int accountId, count = 0, found = 0, choice;
+    double amount;
+
+    printf("\nEnter account ID: ");
+    scanf("%d", &accountId);
+
+    fp = fopen("./data/records.txt", "r");
+    if (fp == NULL) {
+        printf("Error opening file!\n");
+        mainMenu(u);
+        return;
+    }
+
+    while (fscanf(fp, "%d %d %s %d %d/%d/%d %s %d %lf %s",
+                  &records[count].id, &records[count].userId, records[count].name,
+                  &records[count].accountNbr, &records[count].deposit.day,
+                  &records[count].deposit.month, &records[count].deposit.year,
+                  records[count].country, &records[count].phone,
+                  &records[count].amount, records[count].accountType) != EOF) {
+        if (records[count].id == accountId && records[count].userId == u.id) {
+            found = 1;
+            if (strcmp(records[count].accountType, "fixed01") == 0 ||
+                strcmp(records[count].accountType, "fixed02") == 0 ||
+                strcmp(records[count].accountType, "fixed03") == 0) {
+                printf("\nError: Transactions not allowed for fixed accounts!\n");
+                fclose(fp);
+                mainMenu(u);
+                return;
+            }
+
+            printf("\n[1] Deposit\n");
+            printf("[2] Withdraw\n");
+            scanf("%d", &choice);
+            printf("Enter amount: ");
+            scanf("%lf", &amount);
+
+            if (choice == 1) {
+                records[count].amount += amount;
+                printf("\nDeposit successful!\n");
+            } else if (choice == 2) {
+                if (records[count].amount >= amount) {
+                    records[count].amount -= amount;
+                    printf("\nWithdrawal successful!\n");
+                } else {
+                    printf("\nInsufficient funds!\n");
+                    fclose(fp);
+                    mainMenu(u);
+                    return;
+                }
+            } else {
+                printf("Invalid choice!\n");
+                fclose(fp);
+                mainMenu(u);
+                return;
+            }
+        }
+        count++;
+    }
+    fclose(fp);
+
+    if (!found) {
+        printf("\nAccount not found or you don't have permission!\n");
+        mainMenu(u);
+        return;
+    }
+
+    fp = fopen("./data/records.txt", "w");
+    for (int i = 0; i < count; i++) {
+        fprintf(fp, "%d %d %s %d %02d/%02d/%d %s %d %.2lf %s\n",
+                records[i].id, records[i].userId, records[i].name,
+                records[i].accountNbr, records[i].deposit.day,
+                records[i].deposit.month, records[i].deposit.year,
+                records[i].country, records[i].phone,
+                records[i].amount, records[i].accountType);
+    }
+    fclose(fp);
+
     mainMenu(u);
 }
 
