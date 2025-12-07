@@ -6,6 +6,18 @@
 #include <string.h>
 #include <time.h>
 #include <ctype.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <sys/stat.h>
+#include <pthread.h>
+
+#define PIPE_PATH "/tmp/atm_notify_"
+#define COLOR_RESET "\033[0m"
+#define COLOR_GREEN "\033[32m"
+#define COLOR_RED "\033[31m"
+#define COLOR_YELLOW "\033[33m"
+#define COLOR_BLUE "\033[34m"
+#define COLOR_CYAN "\033[36m"
 
 struct Date {
     int day;
@@ -31,9 +43,14 @@ struct User {
     char password[50];
 };
 
+void encryptDecrypt(char *str);
 void loginMenu(char a[50], char pass[50]);
 void registerMenu(char a[50], char pass[50]);
 void mainMenu(struct User u);
+void *notificationListener(void *arg);
+void sendNotification(int userId, char *message);
+void clearScreen();
+void printHeader(char *title);
 void createNewAcc(struct User u);
 void checkAllAccounts(struct User u);
 void checkAccountDetails(struct User u);

@@ -1,17 +1,31 @@
-#include "header.h"
+#include "../include/header.h"
+
+static pthread_t notifyThread;
 
 void mainMenu(struct User u) {
     int option;
-    printf("\n\n\t\t======= ATM =======\n\n");
-    printf("\n\t\t-->> Feel free to choose one of the options below <<--\n");
-    printf("\n\t\t[1]- Create a new account\n");
-    printf("\n\t\t[2]- Update account information\n");
-    printf("\n\t\t[3]- Check accounts\n");
-    printf("\n\t\t[4]- Check list of owned accounts\n");
-    printf("\n\t\t[5]- Make Transaction\n");
-    printf("\n\t\t[6]- Remove existing account\n");
-    printf("\n\t\t[7]- Transfer ownership\n");
-    printf("\n\t\t[8]- Exit\n");
+    static int firstRun = 1;
+    
+    if (firstRun) {
+        pthread_create(&notifyThread, NULL, notificationListener, &u);
+        pthread_detach(notifyThread);
+        firstRun = 0;
+    }
+    
+    clearScreen();
+    printHeader("ATM MANAGEMENT SYSTEM");
+    printf("\n%sWelcome, %s!%s\n", COLOR_GREEN, u.name, COLOR_RESET);
+    printf("\n%s┌────────────────────────────────────────┐%s\n", COLOR_BLUE, COLOR_RESET);
+    printf("%s│  [1]%s Create a new account           %s│%s\n", COLOR_BLUE, COLOR_RESET, COLOR_BLUE, COLOR_RESET);
+    printf("%s│  [2]%s Update account information     %s│%s\n", COLOR_BLUE, COLOR_RESET, COLOR_BLUE, COLOR_RESET);
+    printf("%s│  [3]%s Check account details          %s│%s\n", COLOR_BLUE, COLOR_RESET, COLOR_BLUE, COLOR_RESET);
+    printf("%s│  [4]%s Check list of owned accounts   %s│%s\n", COLOR_BLUE, COLOR_RESET, COLOR_BLUE, COLOR_RESET);
+    printf("%s│  [5]%s Make Transaction               %s│%s\n", COLOR_BLUE, COLOR_RESET, COLOR_BLUE, COLOR_RESET);
+    printf("%s│  [6]%s Remove existing account        %s│%s\n", COLOR_BLUE, COLOR_RESET, COLOR_BLUE, COLOR_RESET);
+    printf("%s│  [7]%s Transfer ownership             %s│%s\n", COLOR_BLUE, COLOR_RESET, COLOR_BLUE, COLOR_RESET);
+    printf("%s│  [8]%s Exit                           %s│%s\n", COLOR_BLUE, COLOR_RESET, COLOR_BLUE, COLOR_RESET);
+    printf("%s└────────────────────────────────────────┘%s\n", COLOR_BLUE, COLOR_RESET);
+    printf("\n%sChoice:%s ", COLOR_CYAN, COLOR_RESET);
     scanf("%d", &option);
 
     switch (option) {
@@ -37,9 +51,10 @@ void mainMenu(struct User u) {
             transferOwnership(u);
             break;
         case 8:
+            printf("\n%sGoodbye!%s\n", COLOR_GREEN, COLOR_RESET);
             exit(0);
         default:
-            printf("Invalid operation!\n");
+            printf("%s\nInvalid operation!%s\n", COLOR_RED, COLOR_RESET);
             mainMenu(u);
     }
 }
@@ -49,11 +64,14 @@ int main() {
     char password[50];
     int r = 0;
 
-    printf("\n\n\t\t======= ATM =======\n");
-    printf("\n\t\t-->> Feel free to login / register :\n");
-    printf("\n\t\t[1]- login\n");
-    printf("\n\t\t[2]- register\n");
-    printf("\n\t\t[3]- exit\n");
+    clearScreen();
+    printHeader("ATM MANAGEMENT SYSTEM");
+    printf("\n%s┌────────────────────────────────────────┐%s\n", COLOR_BLUE, COLOR_RESET);
+    printf("%s│  [1]%s Login                          %s│%s\n", COLOR_BLUE, COLOR_RESET, COLOR_BLUE, COLOR_RESET);
+    printf("%s│  [2]%s Register                       %s│%s\n", COLOR_BLUE, COLOR_RESET, COLOR_BLUE, COLOR_RESET);
+    printf("%s│  [3]%s Exit                           %s│%s\n", COLOR_BLUE, COLOR_RESET, COLOR_BLUE, COLOR_RESET);
+    printf("%s└────────────────────────────────────────┘%s\n", COLOR_BLUE, COLOR_RESET);
+    printf("\n%sChoice:%s ", COLOR_CYAN, COLOR_RESET);
 
     while (!r) {
         scanf("%d", &r);
@@ -65,9 +83,10 @@ int main() {
                 registerMenu(userName, password);
                 break;
             case 3:
+                printf("\n%sGoodbye!%s\n", COLOR_GREEN, COLOR_RESET);
                 exit(0);
             default:
-                printf("Insert a valid operation!\n");
+                printf("%s\nInsert a valid operation!%s\n", COLOR_RED, COLOR_RESET);
                 r = 0;
         }
     }

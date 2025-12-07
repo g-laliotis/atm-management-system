@@ -1,24 +1,36 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -std=c99
+CFLAGS = -Wall -Wextra -std=c99 -Iinclude -pthread
+LDFLAGS = -pthread
+
 SRC_DIR = src
+OBJ_DIR = obj
+BIN_DIR = bin
+INC_DIR = include
 DATA_DIR = data
-TARGET = atm
 
-SRCS = $(SRC_DIR)/main.c $(SRC_DIR)/auth.c $(SRC_DIR)/system.c
-OBJS = $(SRCS:.c=.o)
+TARGET = $(BIN_DIR)/atm
+SRCS = $(wildcard $(SRC_DIR)/*.c)
+OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
-all: $(TARGET)
+all: dirs $(TARGET)
+
+dirs:
+	@mkdir -p $(OBJ_DIR) $(BIN_DIR) $(DATA_DIR) logs
 
 $(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS)
+	$(CC) $(LDFLAGS) -o $@ $^
 
-%.o: %.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJS) $(TARGET)
+	rm -rf $(OBJ_DIR) $(BIN_DIR) logs/*.log
 
 run: $(TARGET)
-	./$(TARGET)
+	@cd $(BIN_DIR) && ./atm
 
-.PHONY: all clean run
+install: $(TARGET)
+	@echo "Installing ATM Management System..."
+	@cp $(TARGET) /usr/local/bin/atm 2>/dev/null || echo "Run with sudo for system-wide install"
+
+.PHONY: all clean run install dirs

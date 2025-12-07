@@ -1,4 +1,4 @@
-#include "header.h"
+#include "../include/header.h"
 
 void createNewAcc(struct User u) {
     struct Record r;
@@ -46,7 +46,7 @@ void createNewAcc(struct User u) {
             r.country, r.phone, r.amount, r.accountType);
     fclose(fp);
 
-    printf("\nAccount created successfully!\n");
+    printf("\n%s✓ Account created successfully!%s\n", COLOR_GREEN, COLOR_RESET);
     mainMenu(u);
 }
 
@@ -204,7 +204,7 @@ void updateAccount(struct User u) {
     }
     fclose(fp);
 
-    printf("\nAccount updated successfully!\n");
+    printf("\n%s✓ Account updated successfully!%s\n", COLOR_GREEN, COLOR_RESET);
     mainMenu(u);
 }
 
@@ -235,7 +235,7 @@ void makeTransaction(struct User u) {
             if (strcmp(records[count].accountType, "fixed01") == 0 ||
                 strcmp(records[count].accountType, "fixed02") == 0 ||
                 strcmp(records[count].accountType, "fixed03") == 0) {
-                printf("\nError: Transactions not allowed for fixed accounts!\n");
+                printf("\n%s✗ Error: Transactions not allowed for fixed accounts!%s\n", COLOR_RED, COLOR_RESET);
                 fclose(fp);
                 mainMenu(u);
                 return;
@@ -249,13 +249,13 @@ void makeTransaction(struct User u) {
 
             if (choice == 1) {
                 records[count].amount += amount;
-                printf("\nDeposit successful!\n");
+                printf("\n%s✓ Deposit successful!%s\n", COLOR_GREEN, COLOR_RESET);
             } else if (choice == 2) {
                 if (records[count].amount >= amount) {
                     records[count].amount -= amount;
-                    printf("\nWithdrawal successful!\n");
+                    printf("\n%s✓ Withdrawal successful!%s\n", COLOR_GREEN, COLOR_RESET);
                 } else {
-                    printf("\nInsufficient funds!\n");
+                    printf("\n%s✗ Insufficient funds!%s\n", COLOR_RED, COLOR_RESET);
                     fclose(fp);
                     mainMenu(u);
                     return;
@@ -337,7 +337,7 @@ void removeAccount(struct User u) {
     }
     fclose(fp);
 
-    printf("\nAccount removed successfully!\n");
+    printf("\n%s✓ Account removed successfully!%s\n", COLOR_GREEN, COLOR_RESET);
     mainMenu(u);
 }
 
@@ -413,6 +413,10 @@ void transferOwnership(struct User u) {
     }
     fclose(fp);
 
-    printf("\nOwnership transferred successfully to %s!\n", targetUsername);
+    char notifyMsg[256];
+    sprintf(notifyMsg, "You received account #%d from %s", accountId, u.name);
+    sendNotification(targetUser.id, notifyMsg);
+    
+    printf("\n%s✓ Ownership transferred successfully to %s!%s\n", COLOR_GREEN, targetUsername, COLOR_RESET);
     mainMenu(u);
 }
