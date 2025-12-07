@@ -115,7 +115,7 @@ void checkAccountDetails(struct User u) {
             printf("Amount: $%.2lf\n", r.amount);
             printf("Type: %s\n", r.accountType);
 
-            if (strcmp(r.accountType, "savings") == 0) {
+            if (strcmp(r.accountType, "savings") == 0 || strcmp(r.accountType, "saving") == 0) {
                 monthlyInterest = r.amount * 0.07 / 12;
                 printf("\nYou will get $%.2lf as interest on day %d of every month\n", monthlyInterest, r.deposit.day);
             } else if (strcmp(r.accountType, "fixed01") == 0) {
