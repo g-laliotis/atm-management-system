@@ -77,7 +77,8 @@ sudo make install
 │   └── db.c          # Database layer (SQLite optional)
 ├── data/             # Data storage
 │   ├── records.txt   # Account records
-│   └── users.txt     # User credentials (encrypted)
+│   ├── users.txt     # User credentials (encrypted)
+│   └── atm.db        # SQLite database (when using make sqlite)
 ├── logs/             # Application logs
 ├── docs/             # Documentation
 │   ├── FEATURES.md   # Additional features documentation
