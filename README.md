@@ -26,7 +26,7 @@ A professional ATM management system written in C with advanced features includi
 - ✅ **Real-time Notifications** - Named pipes for instant transfer alerts
 - ✅ **Professional Structure** - Organized folders (bin/, obj/, include/, etc.)
 - ✅ **Custom Makefile** - Advanced build system with multiple targets
-- ✅ **SQLite Support** - Optional database backend (commented in code)
+- ✅ **SQLite Support** - Optional database backend with conditional compilation
 - ✅ **Code Optimization** - Modular design with separated utilities
 
 ## Interest Rates

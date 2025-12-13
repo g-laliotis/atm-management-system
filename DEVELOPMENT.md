@@ -75,18 +75,25 @@ This project was developed with proper git commits following best practices. Eac
 ✅ Transaction Restrictions on Fixed Accounts
 ✅ Remove Account
 ✅ Transfer Ownership
+✅ SQLite Database Support (conditional compilation)
 
 ## Building and Running
 
 ```bash
-# Compile
+# Compile (text files)
 make
 
+# Compile with SQLite
+make sqlite
+
 # Run
-./atm
+./bin/atm
 
 # Clean build files
 make clean
+
+# Show all targets
+make help
 ```
 
 ## Testing

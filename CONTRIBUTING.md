@@ -30,7 +30,8 @@ By participating in this project, you agree to maintain a respectful and inclusi
 ```bash
 git clone https://github.com/g-laliotis/atm-management-system.git
 cd atm-management-system
-make
+make          # Text file storage
+make sqlite   # SQLite database (requires libsqlite3-dev)
 ```
 
 ## Coding Standards

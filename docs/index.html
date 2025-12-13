@@ -127,7 +127,7 @@ Username: Michel, Password: password1234</div>
                 <div class="card">
                     <div class="feature-icon">🗄️</div>
                     <h3>SQLite Support</h3>
-                    <p>Optional database backend with schema ready (commented in code)</p>
+                    <p>Optional database backend with conditional compilation (`make sqlite`)</p>
                 </div>
                 <div class="card">
                     <div class="feature-icon">⚡</div>
@@ -167,8 +167,11 @@ Username: Michel, Password: password1234</div>
 
         <div class="section">
             <h2>💻 Building & Running</h2>
-            <div class="code"># Build the project
+            <div class="code"># Build with text files (default)
 make
+
+# Build with SQLite database
+make sqlite
 
 # Run the application
 make run
@@ -177,6 +180,9 @@ make run
 
 # Clean build artifacts
 make clean
+
+# Show all targets
+make help
 
 # Install system-wide (optional)
 sudo make install</div>

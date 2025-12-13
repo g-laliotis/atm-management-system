@@ -20,9 +20,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Enhanced terminal UI with colors and professional layout
 - Real-time notifications via named pipes (FIFO)
 - Professional project structure (include/, obj/, bin/, logs/)
-- SQLite database support (optional, commented)
+- SQLite database support with conditional compilation (`make sqlite`)
 - Comprehensive Makefile with multiple targets
 - Complete documentation and GitHub Pages
+- Dual storage modes: text files (default) and SQLite database
 - MIT License
 
 ### Security
