@@ -74,8 +74,14 @@ sudo make install
 │   └── users.txt     # User credentials (encrypted)
 ├── logs/             # Application logs
 ├── docs/             # Documentation
-│   └── FEATURES.md
-└── Makefile          # Build configuration
+│   ├── FEATURES.md   # Additional features documentation
+│   └── index.html    # GitHub Pages
+├── CHANGELOG.md      # Version history
+├── CONTRIBUTING.md   # Contribution guidelines
+├── DEVELOPMENT.md    # Development summary
+├── LICENSE           # MIT License
+├── Makefile          # Build configuration
+└── README.md         # Project documentation
 
 ```
 
