@@ -52,6 +52,7 @@ void mainMenu(struct User u) {
             break;
         case 8:
             printf("\n%sGoodbye!%s\n", COLOR_GREEN, COLOR_RESET);
+            closeDatabase();
             exit(0);
         default:
             printf("%s\nInvalid operation!%s\n", COLOR_RED, COLOR_RESET);
@@ -64,6 +65,7 @@ int main() {
     char password[50];
     int r = 0;
 
+    initDatabase();
     clearScreen();
     printHeader("ATM MANAGEMENT SYSTEM");
     printf("\n%s┌────────────────────────────────────────┐%s\n", COLOR_BLUE, COLOR_RESET);
@@ -84,6 +86,7 @@ int main() {
                 break;
             case 3:
                 printf("\n%sGoodbye!%s\n", COLOR_GREEN, COLOR_RESET);
+                closeDatabase();
                 exit(0);
             default:
                 printf("%s\nInsert a valid operation!%s\n", COLOR_RED, COLOR_RESET);

@@ -40,8 +40,11 @@ A professional ATM management system written in C with advanced features includi
 ## Building and Running
 
 ```bash
-# Build
+# Build (text files - default)
 make
+
+# Build with SQLite database
+make sqlite
 
 # Run
 make run
@@ -50,6 +53,9 @@ make run
 
 # Clean
 make clean
+
+# Show all targets
+make help
 
 # Install system-wide (optional)
 sudo make install

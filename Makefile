@@ -2,6 +2,12 @@ CC = gcc
 CFLAGS = -Wall -Wextra -std=c99 -Iinclude -pthread
 LDFLAGS = -pthread
 
+# SQLite support (optional)
+ifeq ($(USE_SQLITE),1)
+    CFLAGS += -DUSE_SQLITE
+    LDFLAGS += -lsqlite3
+endif
+
 SRC_DIR = src
 OBJ_DIR = obj
 BIN_DIR = bin
@@ -33,4 +39,16 @@ install: $(TARGET)
 	@echo "Installing ATM Management System..."
 	@cp $(TARGET) /usr/local/bin/atm 2>/dev/null || echo "Run with sudo for system-wide install"
 
-.PHONY: all clean run install dirs
+sqlite: clean
+	@echo "Building with SQLite support..."
+	@$(MAKE) USE_SQLITE=1
+
+help:
+	@echo "Available targets:"
+	@echo "  all     - Build with text file storage (default)"
+	@echo "  sqlite  - Build with SQLite database support"
+	@echo "  run     - Build and run the application"
+	@echo "  clean   - Remove build artifacts"
+	@echo "  install - Install system-wide"
+
+.PHONY: all clean run install dirs sqlite help

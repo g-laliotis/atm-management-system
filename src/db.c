@@ -1,9 +1,7 @@
 #include "../include/header.h"
 
-// SQLite database support - optional bonus feature
-// Uncomment and link with -lsqlite3 to enable
-
-/*
+// SQLite database support - bonus feature enabled
+#ifdef USE_SQLITE
 #include <sqlite3.h>
 
 static sqlite3 *db = NULL;
@@ -49,6 +47,7 @@ int initDatabase() {
         return 0;
     }
     
+    printf("\n%s✓ SQLite database initialized successfully!%s\n", COLOR_GREEN, COLOR_RESET);
     return 1;
 }
 
@@ -57,8 +56,11 @@ void closeDatabase() {
         sqlite3_close(db);
     }
 }
-*/
-
-// Placeholder for text file mode
-void initDatabase() {}
+#else
+// Text file mode (default)
+int initDatabase() {
+    printf("\n%s✓ Using text file storage mode%s\n", COLOR_YELLOW, COLOR_RESET);
+    return 1;
+}
 void closeDatabase() {}
+#endif
