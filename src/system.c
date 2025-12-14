@@ -83,6 +83,11 @@ void checkAllAccounts(struct User u) {
     if (!found) {
         printf("No accounts found!\n");
     }
+    
+    printf("\n%sPress Enter to continue...%s", COLOR_YELLOW, COLOR_RESET);
+    getchar(); // consume newline from previous input
+    getchar(); // wait for user input
+    
     mainMenu(u);
 }
 
@@ -139,6 +144,11 @@ void checkAccountDetails(struct User u) {
     if (!found) {
         printf("\nAccount not found or you don't have permission!\n");
     }
+    
+    printf("\n%sPress Enter to continue...%s", COLOR_YELLOW, COLOR_RESET);
+    getchar(); // consume newline from previous input
+    getchar(); // wait for user input
+    
     mainMenu(u);
 }
 
