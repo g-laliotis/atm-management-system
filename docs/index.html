@@ -130,6 +130,11 @@ Username: Michel, Password: password1234</div>
                     <p>Optional database backend with conditional compilation (`make sqlite`)</p>
                 </div>
                 <div class="card">
+                    <div class="feature-icon">🧪</div>
+                    <h3>Test Suite</h3>
+                    <p>Comprehensive automated testing with `make test` for all core functionality</p>
+                </div>
+                <div class="card">
                     <div class="feature-icon">⚡</div>
                     <h3>Code Optimization</h3>
                     <p>Modular design with separated utilities and reduced code duplication</p>
@@ -157,6 +162,7 @@ Username: Michel, Password: password1234</div>
 ├── docs/             # Documentation
 │   ├── FEATURES.md   # Additional features
 │   └── index.html    # GitHub Pages
+├── test_atm.c        # Comprehensive test suite
 ├── CHANGELOG.md      # Version history
 ├── CONTRIBUTING.md   # Contribution guidelines
 ├── DEVELOPMENT.md    # Development summary
@@ -172,6 +178,9 @@ make
 
 # Build with SQLite database
 make sqlite
+
+# Run comprehensive test suite
+make test
 
 # Run the application
 make run

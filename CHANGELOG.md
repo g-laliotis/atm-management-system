@@ -37,3 +37,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Named pipes for inter-process communication
 - Zero compilation warnings with strict flags
 - Modular code design with separated utilities
+
+## [1.1.0] - 2024-12-07
+
+### Added
+- Comprehensive test suite (`test_atm.c`) with 8 automated tests
+- Professional test reporting with pass/fail statistics
+- `make test` target for easy testing
+- Test coverage for all core functionality:
+  - Password encryption/decryption
+  - User registration and authentication
+  - Account creation and management
+  - Interest calculations
+  - File operations and data validation
+  - Notification system
+
+### Fixed
+- Phone number data type changed from `int` to `long long`
+- Phone number display now handles large numbers correctly
+- Real-time notification system no longer blocks program execution
+- Removed input conflicts between notification thread and main program
+- Notifications now display instantly without interrupting menu operations
+
+### Changed
+- Updated all documentation to include test suite information
+- Enhanced project structure documentation
+- Improved notification system for better user experience
+
+### Technical
+- Standalone test compilation without main program dependencies
+- Non-blocking notification display
+- Better data type handling for large numeric values

@@ -30,10 +30,23 @@ atm-management-system/
 ├── src/          # Source code (includes header.h)
 ├── data/         # Data storage
 ├── logs/         # Log files
-└── docs/         # Documentation
+├── docs/         # Documentation
+└── test_atm.c    # Comprehensive test suite
 ```
 
-## 6. Optimized Code
+## 6. Comprehensive Test Suite
+- Automated testing with `make test`
+- Tests for all core functionality:
+  - Password encryption/decryption
+  - User registration and authentication
+  - Account creation and management
+  - Interest calculations
+  - File operations and data validation
+  - Notification system
+- Professional test reporting with pass/fail statistics
+- Ensures code quality and reliability
+
+## 7. Optimized Code
 - Separated utility functions into utils.c
 - Modular database layer in db.c
 - Reduced code duplication

@@ -30,8 +30,10 @@ By participating in this project, you agree to maintain a respectful and inclusi
 ```bash
 git clone https://github.com/g-laliotis/atm-management-system.git
 cd atm-management-system
-make          # Text file storage
-make sqlite   # SQLite database (requires libsqlite3-dev)
+make          # Build with text file storage
+make sqlite   # Build with SQLite database (requires libsqlite3-dev)
+make test     # Run comprehensive test suite
+make run      # Run the application
 ```
 
 ## Coding Standards
@@ -40,14 +42,33 @@ make sqlite   # SQLite database (requires libsqlite3-dev)
 - Use consistent indentation (4 spaces)
 - Add comments for complex logic
 - Ensure no compilation warnings with `-Wall -Wextra`
+- **Run test suite**: `make test` must pass 100%
 - Test all functionality before submitting
+- Maintain modular code structure (separate concerns)
+- Use meaningful variable and function names
+- Handle errors gracefully with user-friendly messages
 
 ## Testing
 
+### Automated Testing
+- **Always run the test suite**: `make test`
+- Ensure all tests pass before submitting PR
+- Add new tests for new functionality
+- Test suite covers:
+  - Password encryption/decryption
+  - User registration and authentication
+  - Account creation and management
+  - Interest calculations
+  - File operations and data validation
+  - Notification system
+
+### Manual Testing
 - Test all features manually
 - Verify no memory leaks
 - Test edge cases and error conditions
+- Test real-time notifications with multiple terminals
 - Ensure backward compatibility
+- Test both text file and SQLite modes
 
 ## Commit Message Format
 
@@ -61,9 +82,11 @@ Use clear, descriptive commit messages:
 
 - Provide clear description of changes
 - Reference related issues
-- Ensure all tests pass
-- Update documentation if needed
+- **Ensure all tests pass**: `make test` must show 100% success
+- Update documentation if needed (README.md, FEATURES.md, etc.)
+- Update CHANGELOG.md with your changes
 - Keep changes focused and atomic
+- Test both compilation modes (`make` and `make sqlite`)
 
 ## Questions?
 

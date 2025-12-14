@@ -2,6 +2,8 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![C99](https://img.shields.io/badge/C-C99-blue.svg)](https://en.wikipedia.org/wiki/C99)
+[![Tests](https://img.shields.io/badge/Tests-8%2F8%20Passing-brightgreen.svg)](https://github.com/g-laliotis/atm-management-system)
+[![Build](https://img.shields.io/badge/Build-Passing-brightgreen.svg)](https://github.com/g-laliotis/atm-management-system)
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?logo=github)](https://github.com/g-laliotis/atm-management-system)
 [![GitHub Pages](https://img.shields.io/badge/GitHub-Pages-blue?logo=github)](https://g-laliotis.github.io/atm-management-system/)
 
@@ -24,6 +26,7 @@ A professional ATM management system written in C with advanced features includi
 - ✅ **Password Encryption** - XOR cipher for secure password storage
 - ✅ **Enhanced Terminal UI** - Color-coded messages and professional layout
 - ✅ **Real-time Notifications** - Named pipes for instant transfer alerts
+- ✅ **Comprehensive Test Suite** - 8 automated tests with 100% pass rate
 - ✅ **Professional Structure** - Organized folders (bin/, obj/, src/, etc.)
 - ✅ **Custom Makefile** - Advanced build system with multiple targets
 - ✅ **SQLite Support** - Optional database backend with conditional compilation
@@ -45,6 +48,9 @@ make
 
 # Build with SQLite database
 make sqlite
+
+# Run tests
+make test
 
 # Run
 make run
@@ -82,6 +88,7 @@ sudo make install
 ├── docs/             # Documentation
 │   ├── FEATURES.md   # Additional features documentation
 │   └── index.html    # GitHub Pages
+├── test_atm.c        # Comprehensive test suite
 ├── CHANGELOG.md      # Version history
 ├── CONTRIBUTING.md   # Contribution guidelines
 ├── DEVELOPMENT.md    # Development summary
@@ -128,6 +135,24 @@ Open two terminals:
 - Passwords are encrypted using XOR cipher before storage
 - User authentication validates encrypted credentials
 - Account operations require ownership verification
+
+## Testing
+
+The project includes a comprehensive test suite that validates:
+- Password encryption/decryption
+- User registration and authentication
+- Account creation and management
+- Interest calculations
+- File operations
+- Data validation
+- Notification system
+
+```bash
+# Run all tests
+make test
+```
+
+Test results show pass/fail status and overall success rate.
 
 ## Development
 
