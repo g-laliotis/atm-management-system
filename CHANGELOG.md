@@ -19,7 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Password encryption using XOR cipher
 - Enhanced terminal UI with colors and professional layout
 - Real-time notifications via named pipes (FIFO)
-- Professional project structure (include/, obj/, bin/, logs/)
+- Professional project structure (src/, obj/, bin/, logs/)
 - SQLite database support with conditional compilation (`make sqlite`)
 - Comprehensive Makefile with multiple targets
 - Complete documentation and GitHub Pages

@@ -27,12 +27,10 @@
 atm-management-system/
 ├── bin/          # Compiled binaries
 ├── obj/          # Object files
-├── src/          # Source code
-├── include/      # Header files
+├── src/          # Source code (includes header.h)
 ├── data/         # Data storage
 ├── logs/         # Log files
-├── docs/         # Documentation
-└── tests/        # Test files
+└── docs/         # Documentation
 ```
 
 ## 6. Optimized Code
