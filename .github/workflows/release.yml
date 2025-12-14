@@ -40,12 +40,9 @@ jobs:
         make clean && make test
     
     - name: Create Release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      uses: softprops/action-gh-release@v1
       with:
-        tag_name: ${{ github.ref }}
-        release_name: ATM Management System ${{ github.ref }}
+        name: ATM Management System ${{ github.ref_name }}
         body: |
           ## ATM Management System Release ${{ github.ref_name }}
           
@@ -69,15 +66,7 @@ jobs:
           ```
           
           See [CHANGELOG.md](CHANGELOG.md) for detailed changes.
+        files: |
+          atm-management-system-${{ github.ref_name }}.tar.gz
         draft: false
         prerelease: false
-    
-    - name: Upload Release Assets
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./atm-management-system-${{ github.ref_name }}.tar.gz
-        asset_name: atm-management-system-${{ github.ref_name }}.tar.gz
-        asset_content_type: application/gzip

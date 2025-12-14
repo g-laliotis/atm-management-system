@@ -27,11 +27,7 @@ jobs:
     - name: Build (SQLite)
       run: |
         make clean
-        if make sqlite; then
-          echo "✅ SQLite build successful"
-        else
-          echo "⚠️ SQLite build failed - this is optional"
-        fi
+        make sqlite || echo "⚠️ SQLite build failed - this is optional"
     
     - name: Check Code Quality
       run: |
@@ -65,8 +61,4 @@ jobs:
         make clean && make
         make test
         make clean
-        if make sqlite; then
-          echo "✅ SQLite build successful"
-        else
-          echo "⚠️ SQLite build failed - this is optional"
-        fi
+        make sqlite || echo "⚠️ SQLite build failed - this is optional"
