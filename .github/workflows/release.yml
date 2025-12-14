@@ -1,0 +1,83 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential libsqlite3-dev
+    
+    - name: Build Release Binaries
+      run: |
+        # Build text file version
+        make clean && make
+        mv bin/atm bin/atm-textfiles
+        
+        # Build SQLite version
+        make clean && make sqlite
+        mv bin/atm bin/atm-sqlite
+        
+        # Create release directory
+        mkdir -p release
+        cp bin/atm-* release/
+        cp README.md LICENSE CHANGELOG.md release/
+        
+        # Create tarball
+        tar -czf atm-management-system-${{ github.ref_name }}.tar.gz release/
+    
+    - name: Run Tests
+      run: |
+        make clean && make test
+    
+    - name: Create Release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: ATM Management System ${{ github.ref }}
+        body: |
+          ## ATM Management System Release ${{ github.ref_name }}
+          
+          ### Features
+          - Professional ATM management system in C
+          - Password encryption with XOR cipher
+          - Real-time notifications via named pipes
+          - Comprehensive test suite (8/8 tests passing)
+          - SQLite and text file storage options
+          
+          ### Downloads
+          - `atm-textfiles`: Version with text file storage
+          - `atm-sqlite`: Version with SQLite database support
+          
+          ### Installation
+          ```bash
+          tar -xzf atm-management-system-${{ github.ref_name }}.tar.gz
+          cd release
+          chmod +x atm-textfiles atm-sqlite
+          ./atm-textfiles  # or ./atm-sqlite
+          ```
+          
+          See [CHANGELOG.md](CHANGELOG.md) for detailed changes.
+        draft: false
+        prerelease: false
+    
+    - name: Upload Release Assets
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./atm-management-system-${{ github.ref_name }}.tar.gz
+        asset_name: atm-management-system-${{ github.ref_name }}.tar.gz
+        asset_content_type: application/gzip

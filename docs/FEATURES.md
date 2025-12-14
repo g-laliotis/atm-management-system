@@ -25,6 +25,8 @@
 ## 5. Professional Project Structure
 ```
 atm-management-system/
+├── .github/      # GitHub Actions workflows
+│   └── workflows/ # CI/CD automation
 ├── bin/          # Compiled binaries
 ├── obj/          # Object files
 ├── src/          # Source code (includes header.h)
@@ -46,7 +48,18 @@ atm-management-system/
 - Professional test reporting with pass/fail statistics
 - Ensures code quality and reliability
 
-## 7. Optimized Code
+## 7. CI/CD Workflows
+- **GitHub Actions automation**:
+  - **ci.yml**: Continuous Integration with multi-platform testing
+  - **release.yml**: Automated releases on version tags
+  - **codeql.yml**: Weekly security analysis
+- Automated testing on every push and pull request
+- Multi-platform compatibility (Ubuntu, macOS)
+- Automated release generation with binaries
+- Security vulnerability scanning
+- Professional workflow badges
+
+## 8. Optimized Code
 - Separated utility functions into utils.c
 - Modular database layer in db.c
 - Reduced code duplication

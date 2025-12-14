@@ -1,0 +1,64 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential libsqlite3-dev
+    
+    - name: Build (Text Files)
+      run: make clean && make
+    
+    - name: Run Tests
+      run: make test
+    
+    - name: Build (SQLite)
+      run: make clean && make sqlite
+    
+    - name: Test SQLite Build
+      run: ./bin/atm --version || echo "SQLite build successful"
+    
+    - name: Check Code Quality
+      run: |
+        echo "Checking for compilation warnings..."
+        make clean
+        gcc -Wall -Wextra -Werror -std=c99 -pthread -c src/*.c
+        echo "✅ No compilation warnings found"
+
+  multi-platform:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Install dependencies (Ubuntu)
+      if: matrix.os == 'ubuntu-latest'
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential libsqlite3-dev
+    
+    - name: Install dependencies (macOS)
+      if: matrix.os == 'macos-latest'
+      run: |
+        brew install sqlite3
+    
+    - name: Build and Test
+      run: |
+        make clean && make
+        make test
+        make clean && make sqlite

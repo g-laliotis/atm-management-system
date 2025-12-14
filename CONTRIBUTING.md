@@ -52,6 +52,7 @@ make run      # Run the application
 
 ### Automated Testing
 - **Always run the test suite**: `make test`
+- **Wait for CI workflows**: All GitHub Actions must pass
 - Ensure all tests pass before submitting PR
 - Add new tests for new functionality
 - Test suite covers:
@@ -61,6 +62,12 @@ make run      # Run the application
   - Interest calculations
   - File operations and data validation
   - Notification system
+
+### CI/CD Testing
+- GitHub Actions automatically test on Ubuntu and macOS
+- Both text file and SQLite builds are verified
+- Security analysis runs automatically
+- All workflows must pass before merge
 
 ### Manual Testing
 - Test all features manually
@@ -83,10 +90,33 @@ Use clear, descriptive commit messages:
 - Provide clear description of changes
 - Reference related issues
 - **Ensure all tests pass**: `make test` must show 100% success
+- **Wait for CI checks**: All GitHub Actions workflows must pass
 - Update documentation if needed (README.md, FEATURES.md, etc.)
 - Update CHANGELOG.md with your changes
 - Keep changes focused and atomic
 - Test both compilation modes (`make` and `make sqlite`)
+
+## CI/CD Workflows
+
+The project uses GitHub Actions for automation:
+
+### Continuous Integration (CI)
+- Runs on every push and pull request
+- Tests on Ubuntu and macOS
+- Builds both text file and SQLite versions
+- Runs comprehensive test suite
+- Checks for compilation warnings
+
+### Security Analysis (CodeQL)
+- Weekly automated security scans
+- Runs on push/PR for security checks
+- GitHub CodeQL analysis for vulnerabilities
+
+### Automated Releases
+- Triggers on version tags (v*)
+- Creates release binaries automatically
+- Generates release notes
+- Uploads release assets
 
 ## Questions?
 

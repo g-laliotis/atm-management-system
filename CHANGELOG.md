@@ -68,3 +68,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Standalone test compilation without main program dependencies
 - Non-blocking notification display
 - Better data type handling for large numeric values
+
+## [1.2.0] - 2024-12-07
+
+### Added
+- GitHub Actions CI/CD workflows:
+  - **ci.yml**: Continuous Integration with multi-platform testing (Ubuntu, macOS)
+  - **release.yml**: Automated releases on version tags
+  - **codeql.yml**: Weekly security analysis with GitHub CodeQL
+- Professional workflow badges in README.md
+- Automated testing on every push and pull request
+- Multi-platform build verification
+- Automated release generation with binaries
+
+### Enhanced
+- Updated project structure documentation to include `.github/workflows/`
+- Added CI/CD to bonus features list
+- Enhanced technical details with automation information
+- Professional badge lineup with CI and CodeQL status
+
+### Technical
+- Enterprise-level CI/CD pipeline
+- Automated security scanning
+- Multi-platform compatibility verification
+- Automated release asset generation

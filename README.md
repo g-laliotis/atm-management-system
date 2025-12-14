@@ -2,6 +2,8 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![C99](https://img.shields.io/badge/C-C99-blue.svg)](https://en.wikipedia.org/wiki/C99)
+[![CI](https://github.com/g-laliotis/atm-management-system/workflows/CI/badge.svg)](https://github.com/g-laliotis/atm-management-system/actions)
+[![CodeQL](https://github.com/g-laliotis/atm-management-system/workflows/CodeQL/badge.svg)](https://github.com/g-laliotis/atm-management-system/actions)
 [![Tests](https://img.shields.io/badge/Tests-8%2F8%20Passing-brightgreen.svg)](https://github.com/g-laliotis/atm-management-system)
 [![Build](https://img.shields.io/badge/Build-Passing-brightgreen.svg)](https://github.com/g-laliotis/atm-management-system)
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?logo=github)](https://github.com/g-laliotis/atm-management-system)
@@ -27,6 +29,7 @@ A professional ATM management system written in C with advanced features includi
 - ✅ **Enhanced Terminal UI** - Color-coded messages and professional layout
 - ✅ **Real-time Notifications** - Named pipes for instant transfer alerts
 - ✅ **Comprehensive Test Suite** - 8 automated tests with 100% pass rate
+- ✅ **CI/CD Workflows** - GitHub Actions for automated testing, releases, and security
 - ✅ **Professional Structure** - Organized folders (bin/, obj/, src/, etc.)
 - ✅ **Custom Makefile** - Advanced build system with multiple targets
 - ✅ **SQLite Support** - Optional database backend with conditional compilation
@@ -71,6 +74,11 @@ sudo make install
 
 ```
 .
+├── .github/          # GitHub Actions workflows
+│   └── workflows/    # CI/CD automation
+│       ├── ci.yml    # Continuous Integration
+│       ├── codeql.yml# Security analysis
+│       └── release.yml# Automated releases
 ├── bin/              # Compiled binaries
 ├── obj/              # Object files
 ├── src/              # Source code
@@ -128,6 +136,8 @@ Open two terminals:
 - **IPC**: Named pipes (FIFOs)
 - **Encryption**: XOR cipher
 - **Build System**: GNU Make
+- **CI/CD**: GitHub Actions (automated testing, releases, security)
+- **Testing**: Comprehensive test suite with 8 automated tests
 - **Optional DB**: SQLite3
 
 ## Security
