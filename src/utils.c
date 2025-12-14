@@ -1,4 +1,4 @@
-#include "../include/header.h"
+#include "header.h"
 
 void clearScreen() {
     printf("\033[2J\033[H");

@@ -1,4 +1,4 @@
-#include "../include/header.h"
+#include "header.h"
 
 static pthread_t notifyThread;
 

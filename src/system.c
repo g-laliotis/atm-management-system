@@ -1,4 +1,4 @@
-#include "../include/header.h"
+#include "header.h"
 
 void createNewAcc(struct User u) {
     struct Record r;

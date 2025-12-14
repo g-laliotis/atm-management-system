@@ -1,4 +1,4 @@
-#include "../include/header.h"
+#include "header.h"
 
 // SQLite database support - bonus feature enabled
 #ifdef USE_SQLITE

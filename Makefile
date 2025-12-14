@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -std=c99 -Iinclude -pthread
+CFLAGS = -Wall -Wextra -std=c99 -pthread
 LDFLAGS = -pthread
 
 # SQLite support (optional)

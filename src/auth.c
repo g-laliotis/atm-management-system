@@ -1,4 +1,4 @@
-#include "../include/header.h"
+#include "header.h"
 
 void encryptDecrypt(char *str) {
     int key = 0x5A;
