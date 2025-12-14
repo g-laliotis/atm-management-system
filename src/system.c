@@ -7,7 +7,7 @@ void createNewAcc(struct User u) {
 
     fp = fopen("./data/records.txt", "r");
     if (fp != NULL) {
-        while (fscanf(fp, "%d %d %s %d %d/%d/%d %s %d %lf %s",
+        while (fscanf(fp, "%d %d %s %d %d/%d/%d %s %lld %lf %s",
                       &r.id, &r.userId, r.name, &r.accountNbr,
                       &r.deposit.day, &r.deposit.month, &r.deposit.year,
                       r.country, &r.phone, &r.amount, r.accountType) != EOF) {
@@ -27,7 +27,7 @@ void createNewAcc(struct User u) {
     printf("Enter country: ");
     scanf("%s", r.country);
     printf("Enter phone number: ");
-    scanf("%d", &r.phone);
+    scanf("%lld", &r.phone);
     printf("Enter amount: ");
     scanf("%lf", &r.amount);
     printf("Choose account type (savings/current/fixed01/fixed02/fixed03): ");
@@ -40,7 +40,7 @@ void createNewAcc(struct User u) {
         return;
     }
 
-    fprintf(fp, "%d %d %s %d %02d/%02d/%d %s %d %.2lf %s\n",
+    fprintf(fp, "%d %d %s %d %02d/%02d/%d %s %lld %.2lf %s\n",
             r.id, r.userId, r.name, r.accountNbr,
             r.deposit.day, r.deposit.month, r.deposit.year,
             r.country, r.phone, r.amount, r.accountType);
@@ -63,7 +63,7 @@ void checkAllAccounts(struct User u) {
     }
 
     printf("\n\t\t====== All accounts from user %s =====\n\n", u.name);
-    while (fscanf(fp, "%d %d %s %d %d/%d/%d %s %d %lf %s",
+    while (fscanf(fp, "%d %d %s %d %d/%d/%d %s %lld %lf %s",
                   &r.id, &r.userId, r.name, &r.accountNbr,
                   &r.deposit.day, &r.deposit.month, &r.deposit.year,
                   r.country, &r.phone, &r.amount, r.accountType) != EOF) {
@@ -72,7 +72,7 @@ void checkAllAccounts(struct User u) {
             printf("Account Number: %d\n", r.accountNbr);
             printf("Deposit Date: %02d/%02d/%d\n", r.deposit.day, r.deposit.month, r.deposit.year);
             printf("Country: %s\n", r.country);
-            printf("Phone: %d\n", r.phone);
+            printf("Phone: %lld\n", r.phone);
             printf("Amount: $%.2lf\n", r.amount);
             printf("Type: %s\n\n", r.accountType);
             found = 1;
@@ -107,7 +107,7 @@ void checkAccountDetails(struct User u) {
         return;
     }
 
-    while (fscanf(fp, "%d %d %s %d %d/%d/%d %s %d %lf %s",
+    while (fscanf(fp, "%d %d %s %d %d/%d/%d %s %lld %lf %s",
                   &r.id, &r.userId, r.name, &r.accountNbr,
                   &r.deposit.day, &r.deposit.month, &r.deposit.year,
                   r.country, &r.phone, &r.amount, r.accountType) != EOF) {
@@ -116,7 +116,7 @@ void checkAccountDetails(struct User u) {
             printf("Account Number: %d\n", r.accountNbr);
             printf("Deposit Date: %02d/%02d/%d\n", r.deposit.day, r.deposit.month, r.deposit.year);
             printf("Country: %s\n", r.country);
-            printf("Phone: %d\n", r.phone);
+            printf("Phone: %lld\n", r.phone);
             printf("Amount: $%.2lf\n", r.amount);
             printf("Type: %s\n", r.accountType);
 
@@ -167,7 +167,7 @@ void updateAccount(struct User u) {
         return;
     }
 
-    while (fscanf(fp, "%d %d %s %d %d/%d/%d %s %d %lf %s",
+    while (fscanf(fp, "%d %d %s %d %d/%d/%d %s %lld %lf %s",
                   &records[count].id, &records[count].userId, records[count].name,
                   &records[count].accountNbr, &records[count].deposit.day,
                   &records[count].deposit.month, &records[count].deposit.year,
@@ -185,7 +185,7 @@ void updateAccount(struct User u) {
                 scanf("%s", records[count].country);
             } else if (choice == 2) {
                 printf("Enter new phone number: ");
-                scanf("%d", &records[count].phone);
+                scanf("%lld", &records[count].phone);
             } else {
                 printf("Invalid choice!\n");
                 fclose(fp);
@@ -205,7 +205,7 @@ void updateAccount(struct User u) {
 
     fp = fopen("./data/records.txt", "w");
     for (int i = 0; i < count; i++) {
-        fprintf(fp, "%d %d %s %d %02d/%02d/%d %s %d %.2lf %s\n",
+        fprintf(fp, "%d %d %s %d %02d/%02d/%d %s %lld %.2lf %s\n",
                 records[i].id, records[i].userId, records[i].name,
                 records[i].accountNbr, records[i].deposit.day,
                 records[i].deposit.month, records[i].deposit.year,
@@ -234,7 +234,7 @@ void makeTransaction(struct User u) {
         return;
     }
 
-    while (fscanf(fp, "%d %d %s %d %d/%d/%d %s %d %lf %s",
+    while (fscanf(fp, "%d %d %s %d %d/%d/%d %s %lld %lf %s",
                   &records[count].id, &records[count].userId, records[count].name,
                   &records[count].accountNbr, &records[count].deposit.day,
                   &records[count].deposit.month, &records[count].deposit.year,
@@ -289,7 +289,7 @@ void makeTransaction(struct User u) {
 
     fp = fopen("./data/records.txt", "w");
     for (int i = 0; i < count; i++) {
-        fprintf(fp, "%d %d %s %d %02d/%02d/%d %s %d %.2lf %s\n",
+        fprintf(fp, "%d %d %s %d %02d/%02d/%d %s %lld %.2lf %s\n",
                 records[i].id, records[i].userId, records[i].name,
                 records[i].accountNbr, records[i].deposit.day,
                 records[i].deposit.month, records[i].deposit.year,
@@ -316,7 +316,7 @@ void removeAccount(struct User u) {
         return;
     }
 
-    while (fscanf(fp, "%d %d %s %d %d/%d/%d %s %d %lf %s",
+    while (fscanf(fp, "%d %d %s %d %d/%d/%d %s %lld %lf %s",
                   &records[count].id, &records[count].userId, records[count].name,
                   &records[count].accountNbr, &records[count].deposit.day,
                   &records[count].deposit.month, &records[count].deposit.year,
@@ -338,7 +338,7 @@ void removeAccount(struct User u) {
 
     fp = fopen("./data/records.txt", "w");
     for (int i = 0; i < count; i++) {
-        fprintf(fp, "%d %d %s %d %02d/%02d/%d %s %d %.2lf %s\n",
+        fprintf(fp, "%d %d %s %d %02d/%02d/%d %s %lld %.2lf %s\n",
                 records[i].id, records[i].userId, records[i].name,
                 records[i].accountNbr, records[i].deposit.day,
                 records[i].deposit.month, records[i].deposit.year,
@@ -391,7 +391,7 @@ void transferOwnership(struct User u) {
         return;
     }
 
-    while (fscanf(fp, "%d %d %s %d %d/%d/%d %s %d %lf %s",
+    while (fscanf(fp, "%d %d %s %d %d/%d/%d %s %lld %lf %s",
                   &records[count].id, &records[count].userId, records[count].name,
                   &records[count].accountNbr, &records[count].deposit.day,
                   &records[count].deposit.month, &records[count].deposit.year,
@@ -414,7 +414,7 @@ void transferOwnership(struct User u) {
 
     fp = fopen("./data/records.txt", "w");
     for (int i = 0; i < count; i++) {
-        fprintf(fp, "%d %d %s %d %02d/%02d/%d %s %d %.2lf %s\n",
+        fprintf(fp, "%d %d %s %d %02d/%02d/%d %s %lld %.2lf %s\n",
                 records[i].id, records[i].userId, records[i].name,
                 records[i].accountNbr, records[i].deposit.day,
                 records[i].deposit.month, records[i].deposit.year,
