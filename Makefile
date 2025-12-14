@@ -26,10 +26,10 @@ dirs:
 	@mkdir -p $(OBJ_DIR) $(BIN_DIR) $(DATA_DIR) logs
 
 $(TARGET): $(OBJS)
-	$(CC) $(LDFLAGS) -o $@ $^
+	$(CC) -o $@ $^ $(LDFLAGS)
 
 $(TEST_TARGET): $(TEST_OBJS)
-	$(CC) $(LDFLAGS) -o $@ $^
+	$(CC) -o $@ $^ $(LDFLAGS)
 
 $(OBJ_DIR)/test_atm.o: test_atm.c
 	$(CC) $(CFLAGS) -c $< -o $@
