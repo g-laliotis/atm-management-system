@@ -25,8 +25,7 @@ void *notificationListener(void *arg) {
         fd = open(pipePath, O_RDONLY);
         if (fd > 0) {
             if (read(fd, buffer, sizeof(buffer)) > 0) {
-                printf("\n%s\n🔔 NOTIFICATION: %s%s\n", COLOR_YELLOW, buffer, COLOR_RESET);
-                printf("\nPress Enter to continue...");
+                printf("\n%s🔔 NOTIFICATION: %s%s\n", COLOR_YELLOW, buffer, COLOR_RESET);
                 fflush(stdout);
             }
             close(fd);
