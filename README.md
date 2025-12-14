@@ -24,7 +24,7 @@ A professional ATM management system written in C with advanced features includi
 - ✅ **Password Encryption** - XOR cipher for secure password storage
 - ✅ **Enhanced Terminal UI** - Color-coded messages and professional layout
 - ✅ **Real-time Notifications** - Named pipes for instant transfer alerts
-- ✅ **Professional Structure** - Organized folders (bin/, obj/, include/, etc.)
+- ✅ **Professional Structure** - Organized folders (bin/, obj/, src/, etc.)
 - ✅ **Custom Makefile** - Advanced build system with multiple targets
 - ✅ **SQLite Support** - Optional database backend with conditional compilation
 - ✅ **Code Optimization** - Modular design with separated utilities
@@ -67,9 +67,8 @@ sudo make install
 .
 ├── bin/              # Compiled binaries
 ├── obj/              # Object files
-├── include/          # Header files
-│   └── header.h
 ├── src/              # Source code
+│   ├── header.h      # Header file with structures
 │   ├── main.c        # Main program and menu
 │   ├── auth.c        # Authentication with encryption
 │   ├── system.c      # Account management
